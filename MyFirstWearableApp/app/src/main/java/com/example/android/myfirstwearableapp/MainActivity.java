@@ -27,5 +27,8 @@ public class MainActivity extends Activity {
 
     public void changeText(View view){
         Log.i("hello", "world");
+        TextView textView = (TextView) findViewById(R.id.text);
+        textView.setText("I've been clicked!");
+
     }
 }
