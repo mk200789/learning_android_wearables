@@ -3,7 +3,6 @@ package com.example.android.myfirstwearableapp;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.wearable.view.WatchViewStub;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -29,7 +28,7 @@ public class MainActivity extends Activity {
     }
 
     public void changeText(View view){
-        Log.i("hello", "world");
+
         TextView textView = (TextView) findViewById(R.id.text);
         textView.setText("I've been clicked!");
 
@@ -44,9 +43,19 @@ public class MainActivity extends Activity {
     }
 
     class myTask extends TimerTask{
+
         public void run(){
-            //prints to console
-            Log.i("it's been", "10 seconds");
+
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    //prints to console
+                    TextView textView = (TextView) findViewById(R.id.text);
+                    textView.setText("It's  been 10 seconds since you clicked!");
+
+                }
+            });
+
         }
     }
 }
